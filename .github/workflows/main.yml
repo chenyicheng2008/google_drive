@@ -1,20 +1,30 @@
-# 這是您的 .github/workflows/main.yml 文件片段
-steps:
-- name: Checkout repository
-  uses: actions/checkout@v4
+name: Google Drive Download Workflow # 給您的工作流程一個名稱
 
-- name: Set up Python
-  uses: actions/setup-python@v4
-  with:
-    python-version: '3.x'
+on: 
+  push:
+    branches: [ main ] # 設定在 push 到 main 分支時觸發此流程
+  workflow_dispatch: # 允許手動點擊按鈕觸發此流程
 
-- name: Install dependencies
-  run: pip install PyDrive2
+jobs: # <-- 新增：所有工作定義的開始
+  run_script: # <-- 新增：定義一個具體的工作 (Job)
+    runs-on: ubuntu-latest # 定義執行環境
 
-- name: Authenticate and Download Data from Drive
-  env:
-    GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }} # 從 Secrets 讀取憑證
-  run: |
-    echo "$GDRIVE_CREDENTIALS" > client_secrets.json  # 將 Secrets 寫入檔案
-    
-    python your_download_script.py
+    steps: # <-- 您的所有步驟現在在這個 Job 之下
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install PyDrive2
+
+      - name: Authenticate and Download Data from Drive
+        env:
+          GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }} # 從 Secrets 讀取憑證
+        run: |
+          echo "$GDRIVE_CREDENTIALS" > client_secrets.json # 將 Secrets 寫入檔案
+          
+          python your_download_script.py
