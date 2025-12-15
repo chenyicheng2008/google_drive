@@ -1,0 +1,10 @@
+- name: Authenticate Google Drive
+  env:
+    # 將 Secrets 內容傳入環境變數
+    GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }} 
+  run: |
+    # 將環境變數的內容 (即 JSON 憑證) 寫入名為 client_secrets.json 的檔案
+    echo "$GDRIVE_CREDENTIALS" > client_secrets.json
+    
+    # 現在您的 Python 腳本就可以使用 client_secrets.json 來認證了
+    python your_download_script.py
