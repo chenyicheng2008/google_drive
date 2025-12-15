@@ -25,6 +25,6 @@ jobs: # <-- 新增：所有工作定義的開始
         env:
           GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }} # 從 Secrets 讀取憑證
         run: |
-          echo "$GDRIVE_CREDENTIALS" > client_secrets.json # 將 Secrets 寫入檔案
+          echo "$GDRIVE_CREDENTIALS" > base64 -d > client_secrets.json # 將 Secrets 寫入檔案
           
           python your_download_script.py
