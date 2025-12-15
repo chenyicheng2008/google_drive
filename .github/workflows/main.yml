@@ -26,5 +26,17 @@ jobs: # <-- 新增：所有工作定義的開始
           GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }} # 從 Secrets 讀取憑證
         run: |
           echo "$GDRIVE_CREDENTIALS" | base64 -d > client_secrets.json # 將 Secrets 寫入檔案
+
+  # ✅【關鍵新增】建立 PyDrive2 設定檔
+      - name: Create PyDrive2 settings.yaml
+        run: |
+          cat <<EOF > settings.yaml
+          client_config_backend: service
+          service_config:
+            client_json_file_path: client_secrets.json
+            client_json_backend: file
+          save_credentials: False
+          EOF
           
-          python your_download_script.py
+      - name: Run download script
+        run: python your_download_script.py
