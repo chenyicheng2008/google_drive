@@ -20,7 +20,7 @@ drive = GoogleDrive(gauth)
 
 # --- 2. 下載 Colab 筆記本 ---
 # 替換成您 Colab 筆記本的檔案 ID
-colab_file_id = '1SH67Ke9EHaY6_84y4vuOwTjI5bWo-SXV'  
+colab_file_id = '11LMuYAmsnUL295ny7V1Tg-Ng5KQurdJ1'  
 
 # 建立檔案物件
 file = drive.CreateFile({'id': colab_file_id})
