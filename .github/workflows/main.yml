@@ -37,6 +37,15 @@ jobs: # <-- 新增：所有工作定義的開始
             client_json_backend: file
           save_credentials: False
           EOF
+
+      - name: Install dependencies
+        run: |
+          # 1. PyDrive2 用於 Google Drive 認證和下載
+          pip install PyDrive2
+          # 2. Papermill 用於執行 Colab 筆記本
+          pip install papermill
+          # 3. 如果您的 Colab 筆記本需要其他套件，也應在此處安裝
+          # pip install numpy pandas requests
           
       - name: Run download script
         run: python your_download_script.py
