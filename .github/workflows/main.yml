@@ -46,6 +46,13 @@ jobs: # <-- 新增：所有工作定義的開始
           pip install papermill
           # 3. 如果您的 Colab 筆記本需要其他套件，也應在此處安裝
           # pip install numpy pandas requests
-          
-      - name: Run download script
-        run: python ollama_github.ipynb
+ 
+
+      # ... (下載檔案的步驟 - 確保下載後的檔案名稱是 ollama_github.ipynb)
+
+      - name: Execute Colab Notebook with Papermill  # 🚀 使用 Papermill
+        run: |
+          papermill ollama_github.ipynb executed_output.ipynb
+        # ❌ 注意：您**不**應該執行：
+        # run: python ollama_github.ipynb
+     
