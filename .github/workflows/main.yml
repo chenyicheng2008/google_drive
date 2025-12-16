@@ -46,7 +46,18 @@ jobs: # <-- 新增：所有工作定義的開始
           pip install papermill
           # 3. 如果您的 Colab 筆記本需要其他套件，也應在此處安裝
           # pip install numpy pandas requests
- 
+
+      - name: Install dependencies and Register Kernel
+        run: |
+          # 1. PyDrive2 和 Papermill
+          # pip install PyDrive2 papermill
+          
+          # 2. 【關鍵新增】安裝 ipykernel
+          pip install ipykernel
+          
+          # 3. 【關鍵新增】註冊 'python3' 核心
+          # 這個命令會將當前 Python 環境註冊為 Jupyter/Papermill 可以使用的 'python3' 核心
+          python -m ipykernel install --user --name=python3 --display-name="Python 3"
 
       # ... (下載檔案的步驟 - 確保下載後的檔案名稱是 ollama_github.ipynb)
 
