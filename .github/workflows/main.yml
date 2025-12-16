@@ -48,4 +48,4 @@ jobs: # <-- 新增：所有工作定義的開始
           # pip install numpy pandas requests
           
       - name: Run download script
-        run: python your_download_script.py
+        run: python ollama_github.ipynb
