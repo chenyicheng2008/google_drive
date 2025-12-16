@@ -12,7 +12,7 @@ gauth.ServiceAuth()
 drive = GoogleDrive(gauth)
 
 # 2. 下載檔案 (使用檔案ID)
-file_id = 'YOUR_FILE_ID_ON_DRIVE' 
+file_id = '1CfTrj0xN_lo8wxUzltVP_zst97bYRE5murppyhW3UW4' 
 file = drive.CreateFile({'id': file_id})
 file.GetContentFile('downloaded_file.txt')
 print(f"File {file['title']} downloaded successfully.")
