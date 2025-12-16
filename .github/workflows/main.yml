@@ -39,4 +39,4 @@ jobs: # <-- 新增：所有工作定義的開始
           EOF
           
       - name: Run download script
-        run: your_download_script.py
+        run: python your_download_script.py
