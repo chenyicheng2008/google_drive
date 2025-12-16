@@ -8,10 +8,12 @@ gauth = GoogleAuth()
 
 # 由於我們在 YAML 中已經設定了 settings.yaml，這裡只需載入並認證。
 # 顯式載入設定檔
-gauth.LoadSettings('settings.yaml') 
-
+#gauth.#gauth.LoadSettings('settings.
+# 執行服務帳號認證。
+# 由於 settings.yaml 已經被自動載入，這裡可以直接認證。
 # 執行服務帳號認證。
 # 注意：您的服務帳號必須被授權存取這個 Google Drive 檔案。
+
 gauth.ServiceAuth()
 
 drive = GoogleDrive(gauth)
