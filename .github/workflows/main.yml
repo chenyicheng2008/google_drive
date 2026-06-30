@@ -40,30 +40,13 @@ jobs: # <-- 新增：所有工作定義的開始
 
       - name: Install dependencies
         run: |
-          # 1. PyDrive2 用於 Google Drive 認證和下載
-          pip install PyDrive2
-          # 2. Papermill 用於執行 Colab 筆記本
-          pip install papermill
-          # 3. 如果您的 Colab 筆記本需要其他套件，也應在此處安裝
-          # pip install numpy pandas requests
-
-      - name: Install dependencies and Register Kernel
-        run: |
-          # 1. PyDrive2 和 Papermill
-          # pip install PyDrive2 papermill
-          
-          # 2. 【關鍵新增】安裝 ipykernel
-          pip install ipykernel
-          
-          # 3. 【關鍵新增】註冊 'python3' 核心
-          # 這個命令會將當前 Python 環境註冊為 Jupyter/Papermill 可以使用的 'python3' 核心
+          pip install PyDrive2 papermill ipykernel ollama tiktoken requests
           python -m ipykernel install --user --name=python3 --display-name="Python 3"
 
-      # ... (下載檔案的步驟 - 確保下載後的檔案名稱是 ollama_github.ipynb)
-
-      - name: Execute Colab Notebook with Papermill  # 🚀 使用 Papermill
+      - name: Execute Notebook with Papermill
+        env:
+          LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
+          SUMMARY_DRIVE_FILE_ID: ${{ secrets.SUMMARY_DRIVE_FILE_ID }}
         run: |
           papermill ollama_github.ipynb executed_output.ipynb
-        # ❌ 注意：您**不**應該執行：
-        # run: python ollama_github.ipynb
      
