@@ -141,6 +141,20 @@ td .num{white-space:nowrap}
 .scen .box h3 .num{font-size:13px;color:var(--muted);font-weight:400;margin-left:6px}
 @media (max-width:860px){.scen{grid-template-columns:1fr}}
 
+.orgs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.org{background:var(--surface);border:1px solid var(--rule);padding:16px;display:grid;gap:8px;align-content:start}
+.org .hd{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}
+.org .tk{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.org dl{margin:0;display:grid;grid-template-columns:5.5em 1fr;gap:4px 10px;font-size:14px}
+.org dt{color:var(--muted);font-size:12.5px;padding-top:2px}
+.org dd{margin:0;color:var(--ink2)}
+@media (max-width:760px){.orgs{grid-template-columns:1fr}}
+.cmp{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--rule);background:var(--surface)}
+.cmp > div{padding:12px 14px;display:grid;gap:4px;align-content:start}
+.cmp > div + div{border-left:1px solid var(--rule)}
+.cmp h3{font-size:15px}
+.cmp p{font-size:13.5px;color:var(--ink2)}
+@media (max-width:760px){.cmp{grid-template-columns:1fr}.cmp > div + div{border-left:0;border-top:1px solid var(--rule)}}
 footer{margin-top:40px;padding-top:18px;border-top:3px double var(--rule);font-size:12.5px;color:var(--muted);display:grid;gap:8px}
 footer ul{margin:0;padding-left:18px}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
@@ -156,7 +170,7 @@ footer ul{margin:0;padding-left:18px}
 </header>
 
 <nav class="toc" aria-label="章節">
-  <a href="#overview">總覽</a><a href="#background">法案背景</a><a href="#timeline">時間軸</a><a href="#stake">各方利益</a><a href="#stocks">相關個股</a><a href="#coins">加密幣與穩定幣</a><a href="#treasury">美國國債</a><a href="#sec-faq">SEC 九問九答</a><a href="#outlook">展望</a>
+  <a href="#overview">總覽</a><a href="#background">法案背景</a><a href="#timeline">時間軸</a><a href="#stake">各方利益</a><a href="#stocks">相關個股</a><a href="#coins">加密幣與穩定幣</a><a href="#treasury">美國國債</a><a href="#sec-faq">SEC 九問九答</a><a href="#players">DeFi 與機構</a><a href="#outlook">展望</a>
 </nav>
 
 <section id="overview">
@@ -384,8 +398,85 @@ footer ul{margin:0;padding-left:18px}
   </div>
 </section>
 
+<section id="players">
+  <div class="sec-head"><span class="eyebrow">08 · DeFi 與關鍵機構</span><h2>什麼是 DeFi，誰在這場爭論裡</h2></div>
+  <p><b>DeFi（Decentralized Finance，去中心化金融）</b>指在公開區塊鏈上以智能合約提供的金融服務：交易、借貸、衍生品、資產管理等，不需要銀行、券商或交易所當中介。程式碼公開、規則自動執行，用戶以自己的錢包保管資產，任何人都能使用與組合這些服務。</p>
+  <div class="cmp">
+    <div><h3>傳統金融（TradFi）</h3><p>銀行、券商、交易所持有客戶資產並撮合交易；靠執照、KYC 與監管機關約束；由公司決定規則。</p></div>
+    <div><h3>中心化加密平台（CeFi）</h3><p>Coinbase、Binance 等交易所；交易標的是加密資產，但資產仍由公司託管，本質上與券商相似，已在既有法規框架內。</p></div>
+    <div><h3>去中心化金融（DeFi）</h3><p>Uniswap、Aave、Hyperliquid 等協議；用戶自行託管，智能合約自動撮合與清算，治理常交給代幣持有人投票，沒有可發執照的單一對象。</p></div>
+  </div>
+  <div class="cols2">
+    <div class="box">
+      <h3>判斷是否「真的」去中心化</h3>
+      <ul>
+        <li><b>託管：</b>誰能動用戶資產？只有用戶本人才算。</li>
+        <li><b>控制：</b>開發團隊能否單方面修改合約、凍結資金或更改參數？</li>
+        <li><b>治理：</b>規則由分散的代幣持有人決定，還是少數內部人？</li>
+        <li><b>開放：</b>程式碼是否開源、任何人是否可無許可使用。</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>為什麼監管難</h3>
+      <ul>
+        <li>沒有可發執照、可課責的公司；CLARITY §604 因此以「不控制、不託管」界定開發者免責。</li>
+        <li>「去中心化」是程度問題，很多協議表面分散、實際由團隊掌控，形成「去中心化劇場」。</li>
+        <li>SEC 9/25 FAQ 以發行方自述的去中心化標準判斷證券屬性，正是爭議所在。</li>
+        <li>匿名與無許可特性，是執法團體反對 §604 的理由。</li>
+      </ul>
+    </div>
+  </div>
+  <p>下列四家與 9/25 FAQ 直接相關：前三家是代幣回購的主要受益者，a16z 則是最主要的批評者。</p>
+  <div class="orgs">
+    <div class="org">
+      <div class="hd"><h3>Hyperliquid</h3><span class="tk">HYPE · 鏈上衍生品交易所</span><span class="pill p-pos">FAQ 受益</span></div>
+      <dl>
+        <dt>定位</dt><dd>自建區塊鏈上的永續合約交易所，兼具中心化交易所的撮合速度與用戶自行託管</dd>
+        <dt>創辦</dt><dd>Jeff Yan，前高頻交易員；團隊約 11 人，未拿創投資金、未做私募</dd>
+        <dt>代幣</dt><dd>2024-11 發行 HYPE，大量空投給用戶，無創投解鎖賣壓；流通市值約 $20.3B（9/27，排名第 12）</dd>
+        <dt>規模</dt><dd>約占鏈上永續合約量 70%；至 9/15 協議收入 $429M，高於第二、三名總和；HIP-3 允許質押 50 萬 HYPE 自建市場</dd>
+        <dt>回購</dt><dd>約 99% 手續費自動買回並銷毀 HYPE，自上線累計約 $1.3B，2026 年內約 $370M</dd>
+        <dt>關聯</dt><dd>回購是核心設計，FAQ 降低其在美國的證券法風險</dd>
+      </dl>
+    </div>
+    <div class="org">
+      <div class="hd"><h3>Pump.fun</h3><span class="tk">PUMP · 迷因幣發行平台</span><span class="pill p-mix">受益但爭議大</span></div>
+      <dl>
+        <dt>定位</dt><dd>Solana 上一鍵發行迷因幣的平台，代幣先在聯合曲線交易，達門檻後轉上 DEX</dd>
+        <dt>創辦</dt><dd>2024 年由 Alon Cohen、Noah Tweedale、Dylan Kerler 創辦；營運公司為英國 Baton Corporation</dd>
+        <dt>營收</dt><dd>2025 年約 $971M；2026 年隨迷因幣退燒下滑，9 月年化約 $468M</dd>
+        <dt>回購</dt><dd>原承諾全部收入回購；2026-04 一次銷毀約 $370M（流通量 36%），之後改為 50% 淨收入持續回購</dd>
+        <dt>爭議</dt><dd>平台上多數代幣歸零或遭「拉地毯」；2025-01 起多件集體訴訟指控助長拉高出貨，尚未判決</dd>
+        <dt>關聯</dt><dd>有明確營運公司與收入，最可能落入 Peirce 所說「有中央主體則 FAQ 不適用」</dd>
+      </dl>
+    </div>
+    <div class="org">
+      <div class="hd"><h3>Uniswap</h3><span class="tk">UNI · 最大去中心化交易所</span><span class="pill p-pos">FAQ 受益</span></div>
+      <dl>
+        <dt>定位</dt><dd>2018 年推出，首創自動做市商（AMM）：用戶與流動性池交易，不需掛單簿，是 DeFi 的基礎設施</dd>
+        <dt>創辦</dt><dd>Hayden Adams；Uniswap Labs 開發，協議由 UNI 持有人 DAO 治理</dd>
+        <dt>監管</dt><dd>2024-04 收到 SEC Wells 通知；2025-02 SEC 結案，未起訴、未罰款</dd>
+        <dt>轉型</dt><dd>2025-12 治理通過「UNIfication」，開啟協議手續費並回購銷毀 UNI；首批銷毀 1 億枚（約 $557M，原始供給約 10%）</dd>
+        <dt>關聯</dt><dd>CEO 稱 FAQ 為「重磅炸彈」；UNI 從純治理代幣轉為分配價值，FAQ 使其法律風險大降</dd>
+      </dl>
+    </div>
+    <div class="org">
+      <div class="hd"><h3>a16z（Andreessen Horowitz）</h3><span class="tk">矽谷創投 · a16z crypto</span><span class="pill p-neg">FAQ 批評者</span></div>
+      <dl>
+        <dt>定位</dt><dd>Marc Andreessen 與 Ben Horowitz 2009 年創立；2018 年成立 a16z crypto，由 Chris Dixon 主導</dd>
+        <dt>資金</dt><dd>2026-05 第五期加密基金 $2.2B，五期累計 $9.8B</dd>
+        <dt>投資</dt><dd>早期投資 Coinbase；Uniswap 重要投資人與 UNI 持有者</dd>
+        <dt>政治</dt><dd>加密產業政治行動委員會 Fairshake 主要金主；深度參與 CLARITY 條文遊說（DeFi 開發者保護、以「控制權」判定代幣屬性）</dd>
+        <dt>立場</dt><dd>法務長 Miles Jennings 主張：公司控制、分享公司收入的代幣應屬證券；真正去中心化的網路代幣屬商品</dd>
+        <dt>關聯</dt><dd>稱 FAQ「也許是史上最大漏洞」：任何新創都能把收入代幣化賣給大眾而規避證券法，且員工意見換屆即可推翻，反而削弱立法路線</dd>
+      </dl>
+    </div>
+  </div>
+  <p>值得注意的反差：a16z 是 Uniswap 的大股東，卻批評一份對 Uniswap 有利的指引。它爭的是監管框架的劃線方式，而不是個別代幣的漲跌。</p>
+</section>
+
 <section id="outlook">
-  <div class="sec-head"><span class="eyebrow">08 · 展望</span><h2>三種情境與觀察清單</h2></div>
+  <div class="sec-head"><span class="eyebrow">09 · 展望</span><h2>三種情境與觀察清單</h2></div>
   <div class="scen">
     <div class="box"><h3>復議再表決<span class="num">低機率</span></h3><p class="small">Tillis 保留的復議動議可在年底前重新表決，但需解決倫理條款。預測市場給 2026 年通過的機率約 7–9%。若意外通過，COIN、HOOD、山寨幣彈性最大。</p></div>
     <div class="box"><h3>期中選舉後重來<span class="num">主情境</span></h3><p class="small">2026-11-03 期中選舉決定 2027 年參院組成。新國會須重新提案，時程最快落在 2027 年中。期間由 SEC／CFTC 規則與 GENIUS 施行細則填補空白。</p></div>
@@ -415,6 +506,7 @@ footer ul{margin:0;padding-left:18px}
     <li><a href="https://www.coindesk.com/policy/2026/05/14/clarity-act-clears-u-s-senate-committee-on-its-way-to-a-final-test-in-congress">參院銀行委員會 5/14</a> · <a href="https://www.forbes.com/sites/jasonbrett/2026/05/01/tillis-alsobrooks-reach-compromise-on-stablecoin-yield-in-clarity-act/">Tillis–Alsobrooks 妥協</a> · <a href="https://www.forbes.com/sites/jasonbrett/2026/01/14/coinbase-pulls-support-night-before-senate-markup-of-market-structure/">Coinbase 撤回支持</a></li>
     <li><a href="https://cointelegraph.com/markets/crypto-stocks-slide-after-clarity-act-fails-to-advance-in-senate">Cointelegraph 個股</a> · <a href="https://www.cryptotimes.io/2026/09/26/crypto-stocks-abtc-crcl-coin-mstr-slide-as-btc-trades-under-84k/">Crypto Times 9/26</a> · <a href="https://finance.yahoo.com/personal-finance/investing/article/bitcoin-and-ethereum-prices-today-friday-september-25-2026-is-bitcoin-finally-on-a-path-to-250000-113048042.html">Yahoo 9/25 價格</a></li>
     <li><a href="https://www.sec.gov/about/divisions-offices/division-corporation-finance/faqs-crypto-assets">SEC 加密資產 FAQ</a> · <a href="https://decrypt.co/379398/sec-staff-token-buybacks-dont-make-crypto-security">Decrypt：FAQ 解讀</a> · <a href="https://ambcrypto.com/biggest-loophole-ever-a16z-challenges-sec-crypto-buyback-faq/">a16z「最大漏洞」</a> · <a href="https://www.paulhastings.com/insights/crypto-policy-tracker/clarity-act-fails-senate-vote-sec-issues-tokenized-stock-innovation-exemption-cftc-issues-no-action-relief-for-passive-software-providers-prediction-markets-litigation-advances">Paul Hastings：創新豁免與 CFTC</a> · <a href="https://www.coindesk.com/policy/2026/09/18/cftc-sends-crypto-rules-to-white-house-to-review-as-congress-stalls-on-clarity-act">CFTC 送白宮審查</a> · <a href="https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260924a.htm">聯準會 9/24 提案</a> · <a href="https://crypto.news/crypto-token-buybacks-hit-record-638m-in-2026/">回購 6.38 億</a> · <a href="https://www.hkma.gov.hk/eng/news-and-media/press-releases/2026/04/20260410-4/">HKMA 牌照</a> · <a href="https://www.penning.io/learn/articles/state-of-mica-july-2026">MiCA 7 月現況</a></li>
+    <li><a href="https://colossus.com/article/beyond-the-sky-jeffrey-yan-hyperliquid/">Colossus：Hyperliquid</a> · <a href="https://www.coindesk.com/markets/2026/04/29/pump-fun-burns-36-of-pump-supply-in-usd370-million-wipe-locks-50-revenue-into-ongoing-buybacks">CoinDesk：Pump.fun 銷毀</a> · <a href="https://thedefiant.io/news/defi/uniswap-passes-unification-fee-switch-proposal">The Defiant：UNIfication</a> · <a href="https://www.fxstreet.com/cryptocurrencies/news/sec-dismisses-investigation-into-uniswap-as-number-of-crypto-legal-cases-decline-202502252153">SEC 結案 Uniswap</a> · <a href="https://fortune.com/2026/05/05/a16z-crypto-andreessen-horowitz-fifth-fund-2-2-billion/">Fortune：a16z 第五期基金</a></li>
     <li><a href="https://stablecoinbeat.com/tracker/">Stablecoin Beat</a> · <a href="https://www.brookings.edu/articles/stablecoins-after-genius/">Brookings</a> · <a href="https://www.coindesk.com/business/2026/02/23/u-s-treasury-may-boost-t-bill-issuance-as-stablecoins-eye-usd2-trillion-market-cap-stanchart">渣打 T-bill 研究</a> · <a href="https://www.federalregister.gov/documents/2026/08/18/2026-16796/genius-act-regulations-on-payment-stablecoin-issuance-offer-and-sale">Federal Register GENIUS 規則</a> · <a href="https://paymentexpert.com/2026/09/21/clarity-act-fails-sec-cftc-crypto/">SEC／CFTC 後續</a></li>
   </ul>
 </footer>
